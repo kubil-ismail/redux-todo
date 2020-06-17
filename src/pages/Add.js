@@ -44,12 +44,13 @@ class Add extends Component {
                 })}
               />
             </Form.Group>
-            <Button 
+            <Button
               onClick={() => {
                 this.props.increaseTodo(title, desc)
                 this.props.history.push('/')
-              }}>
-              Save
+              }}
+            > 
+            Save
             </Button>
           </Form>
         </Card.Body>

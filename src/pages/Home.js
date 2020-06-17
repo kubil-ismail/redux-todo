@@ -8,7 +8,6 @@ import { decreaseTodo } from '../redux/actions/todoActions'
 class Home extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props.Todo.todoReducers)
   }
   
   render() {
@@ -25,18 +24,20 @@ class Home extends Component {
             {
               this.props.Todo.todoReducers.value === 0 ?
               <Alert variant="warning">List not found</Alert> :
-              <ListGroup.Item className="d-flex justify-content-between">
-                <div>
-                  <i className="fa fa-circle-thin float-left mt-1" aria-hidden="true"></i>
-                  <div className="ml-4">
-                    <h5>{this.props.Todo.todoReducers.title}</h5>
-                    <p className="text-muted">{this.props.Todo.todoReducers.desc}</p>
+              this.props.Todo.todoReducers.data.map((val,key) => (
+                <ListGroup.Item className="d-flex justify-content-between">
+                  <div>
+                    <i className="fa fa-circle-thin float-left mt-1" aria-hidden="true"></i>
+                    <div className="ml-4">
+                      <h5>{val.title}</h5>
+                      <p className="text-muted">{val.desc}</p>
+                    </div>
                   </div>
-                </div>
-                <Button variant="transpaernt text-danger" onClick={() => this.props.decreaseTodo()}>
-                  <i className="fa fa-trash" aria-hidden="true"></i>
-                </Button>
-              </ListGroup.Item>
+                  <Button variant="transpaernt text-danger" onClick={() => this.props.decreaseTodo(key)}>
+                    <i className="fa fa-trash" aria-hidden="true"></i>
+                  </Button>
+                </ListGroup.Item>
+              ))
             }
             <ListGroup.Item>
               <Link to="/add">

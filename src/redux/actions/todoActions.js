@@ -8,9 +8,10 @@ export const increaseTodo = (title, desc) => {
   }
 }
 
-export const decreaseTodo = () => {
+export const decreaseTodo = (id) => {
   return {
-    type: 'DECREASE'
+    type: 'DECREASE',
+    payload: id
   }
 }
 
